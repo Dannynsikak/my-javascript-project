@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css" />
+    <link rel="stylesheet" href="output.css" />
+  </head>
+  <body>
+    <h2>Live output</h2>
+    <div class="output" style="min-height: 150px">
+      <input type="text" /><button>Search</button>
+
+      <ul></ul>
+    </div>
+
+    <h2>Editable code</h2>
+
+    <p class="a11y-label">
+      Press Esc to move focus away from the code area (Tab inserts a tab
+      character).
+    </p>
+
+    <textarea id="code" class="playable-code" style="height: 370px; width: 95%">
+const list = document.querySelector('.output ul');
+const searchInput = document.querySelector('.output input');
+const searchBtn = document.querySelector('.output button');
+
+list.innerHTML = '';
+
+const myHistory = [];
+const MAX_HISTORY = 5;
+
+searchBtn.onclick = () => {
+  // we will only allow a term to be entered if the search input isn't empty
+  if (searchInput.value !== '') {
+    // number 1
+
+    // empty the list so that we don't display duplicate entries
+    // the display is regenerated every time a search term is entered.
+    list.innerHTML = '';
+
+    // loop through the array, and display all the search terms in the list
+    for (const itemText of myHistory) {
+      const listItem = document.createElement('li');
+      listItem.textContent = itemText;
+      list.appendChild(listItem);
+    }
+
+    // If the array length is 5 or more, remove the oldest search term
+    if (myHistory.length >= MAX_HISTORY) {
+      // number 2
+    }
+
+    // empty the search input and focus it, ready for the next term to be entered
+    searchInput.value = '';
+    searchInput.focus();
+  }
+}
+</textarea
+    >
+
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset" />
+      <input id="solution" type="button" value="Show solution" />
+    </div>
+    <script src="javascript3.js"></script>
+  </body>
+</html>
